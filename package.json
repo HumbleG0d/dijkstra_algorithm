@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "8.43.0"
+  },
+  "dependencies": {
+    "vis": "^4.21.0-EOL"
   }
 }
