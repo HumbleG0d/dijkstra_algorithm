@@ -35,17 +35,18 @@ let highlightedEdges = []
 const calcular = document.getElementById('button')
 calcular.addEventListener('click' , (e) => {
 	e.preventDefault()
-	const path = dijkstra(graph , nodo1 , nodo2)
-	
+	const p = document.getElementById('path')
+	const p2 = document.getElementById('distance')
+    
+	const {path,distance} = dijkstra(graph , nodo1 , nodo2)
 	bandera = true
 	highlightedEdges = []
 	for(let i = 0 ; i < path.length-1 ; i++){
 		highlightedEdges.push({from: path[i] , to: path[i+1]})
 	}
 	drawGraph(graph , highlightedEdges , bandera)
-    
-	const p = document.getElementById('path')
-	p.innerHTML = `${path.join('->')}`
+	p.innerHTML = `Camino : ${path.join('->')}`
+	p2.innerHTML = `Distancia: ${distance}`
 })
 
 if(!bandera)drawGraph(graph , highlightedEdges , bandera)
