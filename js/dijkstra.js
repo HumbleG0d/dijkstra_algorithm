@@ -1,37 +1,35 @@
-const distances = {} //* Creamos un objeto que almacenara las distancias más cortas desde el nodo inicial
+export function dijkstra(graph , start_node , end_node){
+	const distances = {} //* Creamos un objeto que almacenara las distancias más cortas desde el nodo inicial
 
-const visited = {} //* Creamos un objeto que almacenara los nodos visitados.
-
-const previousNodes = {} //* Creamos un objeto que alacenara los nodos del camino más corto.
-
-function initialCondition(graph , start_node){
-
+	const visited = {} //* Creamos un objeto que almacenara los nodos visitados.
+	
+	const previousNodes = {} //* Creamos un objeto que alacenara los nodos del camino más corto.
+	
 	//* Al inicio del algortimo todos los nodos tienen una distancia infinita exceptuando el nodo inicial
-
+	
 	for(let nodo in graph){
 		distances[nodo] = Infinity
 	}
 	distances[start_node] = 0
-}
 
-//* Creamos una funcion para encontrar el nodo con la distancia mas corta
-function findNodeShortestDistance(graph){
-	let shortest_distance = Infinity //* Distancia mas corta al comenzar
-	let shortest_node = null
+
+	//* Creamos una funcion para encontrar el nodo con la distancia mas corta
+	function findNodeShortestDistance(){
+		let shortest_distance = Infinity //* Distancia mas corta al comenzar
+		let shortest_node = null
 	
-	for(let node in graph){
+		for(let node in graph){
 		//* Verificamos si el nodo ya ah sido visitado o no , ademas verifica que la distancia del nodo es menor o igual a la distancia mas corta encontrada. Si es asi actualizamos shortest_distnace y guardamos el nodo con la distancia mas corta.
 		
-		if(!visited[node] && distances[node] <= shortest_distance){
-			shortest_distance = distances[node]
-			shortest_node = node
+			if(!visited[node] && distances[node] <= shortest_distance){
+				shortest_distance = distances[node]
+				shortest_node = node
+			}
 		}
+
+		return shortest_node
 	}
 
-	return shortest_node
-}
-
-function tourNodes(end_node , graph){
 	//* Iteramos hasta visitar todos los nodos
 	let condition = true
 	while(condition){
@@ -59,21 +57,14 @@ function tourNodes(end_node , graph){
 			}
 		}
 	}
-}
-
-export function dijkstra(graph , start_node , end_node){
-
-	initialCondition(graph , start_node)
-	tourNodes(end_node , graph)
 	
-	//* Damos forma a los nodos para mostrar la ruta que se sigue para encontrar la menor distancia.
+	//* Damos forma a los nodos para mostrar la ruta que se siguio para encontrar la menor distancia.
 
 	const path = [end_node] 
-
 	let previousNode = previousNodes[end_node]
 	while (previousNode) {
 		path.unshift(previousNode)
 		previousNode = previousNodes[previousNode]
 	}
-	return path
+	return {path: path, distance : distances[end_node]}
 }
