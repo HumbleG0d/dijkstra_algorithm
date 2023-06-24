@@ -15,19 +15,33 @@
   <body>
     <div id="myGraph" class="myGraph"></div>
     <div class="dats">
+      <form action="" class="form">
+        <label for="grafo">
+          Grafo:
+          <textarea
+            name=""
+            id="grafo"
+            class="grafo"
+            cols="30"
+            rows="5"
+          ></textarea>
+        </label>
+        <button id="view" class="button">Mostrar</button>
+      </form>
+
       <form class="form">
-        <label for="">
+        <label for="nodo_inicial">
           Nodo inicial:
           <input type="text" id="nodo_inicial" />
         </label>
-        <label for="">
+        <label for="nodo_final">
           Nodo Final:
           <input type="text" id="nodo_final" />
         </label>
         <button id="button" class="button">Calcular</button>
       </form>
       <p id="path" class="path"></p>
-      <p id="distance" class="distance"></p>
+      <p id="distance" class="path"></p>
     </div>
     <script type="module" src="/js/index.js"></script>
   </body>
