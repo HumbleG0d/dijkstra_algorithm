@@ -20,7 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 30vw;
   height: 100vh;
 }
@@ -53,5 +53,10 @@ body {
 }
 
 .path {
-  font-size: 18px;
+  font-size: 32px;
+}
+
+.grafo {
+  border: 2px solid blue;
+  margin-left: 10px;
 }
